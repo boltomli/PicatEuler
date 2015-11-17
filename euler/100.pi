@@ -1,0 +1,24 @@
+%Project Euler Problem 100
+%=========================
+%
+%If a box contains twenty-one coloured discs, composed of fifteen blue
+%discs and six red discs, and two discs were taken at random, it can be
+%seen that the probability of taking two blue discs, P(BB) = (15/21) *
+%(14/20) = 1/2.
+%
+%The next such arrangement, for which there is exactly 50% chance of taking
+%two blue discs at random, is a box containing eighty-five blue discs and
+%thirty-five red discs.
+%
+%By finding the first arrangement to contain over 10^12 = 1,000,000,000,000
+%discs in total, determine the number of blue discs that the box would
+%contain.
+
+% Let X be the GCD of Red and Blue, and R*X=Red, B*X=Blue
+% We have Blue/(Red+Blue)*(Blue-1)/(Red+Blue-1)=1/2
+% With pen and paper I found that B and X can't be even and
+% When R is odd,  X=(2*B-(2*B**2-2)**(1/2))/2
+% When R is even, X=2*B-(2*B**2-1)**(1/2)
+% Now find any B that makes X an integer
+% Not much code necessary for this problem
+% Don't forget that Blue=B*X :)
