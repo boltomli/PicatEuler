@@ -1,0 +1,48 @@
+%Project Euler Problem 37
+%========================
+%
+%The number 3797 has an interesting property. Being prime itself, it is
+%possible to continuously remove digits from left to right, and remain
+%prime at each stage: 3797, 797, 97, and 7. Similarly we can work from
+%right to left: 3797, 379, 37, and 3.
+%
+%Find the sum of the only eleven primes that are both truncatable from left
+%to right and right to left.
+%
+%NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
+
+% Unlike constructive solutions by adding digits from one side to 
+% current prime and check the other side, I bruteforce the primes table.
+% Picat provides primes list function, which takes 2/3 CPU time.
+
+main =>
+	time(all).
+	
+all =>
+	LIM = 999999,
+	PN = primes(LIM),
+	time(go(PN)).
+
+go(PN) =>
+	SUM = 0,
+	foreach (N in PN, N > 9)
+		T = true,
+		if (even(N mod 10); not prime(N mod 10)) then
+			T := false
+		end,
+		if (T == true, not prime(N div (10 ** floor(log10(N))))) then
+			T := false
+		end,
+		if (T == true) then
+			D = floor(log10(N)),
+			foreach (I in 1..D, T == true)
+				if (even(N mod (10 ** I)); not prime(N mod (10 ** I)); not prime(N div (10 ** I))) then
+					T := false
+				end
+			end,
+			if (T == true) then
+				SUM := SUM + N
+			end
+		end
+	end,
+	printf("%w\n", SUM).
