@@ -1,9 +1,12 @@
-# PicatEuler
-ProjectEuler: https://projecteuler.net/
+## There are plenty of problems on ProjectEuler
+https://projecteuler.net/
 
-# Solutions by
-Mr. Hakan Kjellerstrand: http://hakank.org/picat/
-Lei Chen: https://github.com/leichen007/projecteuler
+## With solutions in Picat
+http://picat-lang.org/
 
-# Why this repo
-I independently solved the problems, sometimes in different approaches which are worth noted (fast, interesting, etc.)
+## By Mr. Hakan Kjellerstrand and Lei Chen
+* http://hakank.org/picat/
+* https://github.com/leichen007/projecteuler
+
+## Then why this repo?
+Because I've been solving the problems independently and sometimes use a different approach which are interesting IMO. I'll mainly use Picat programming language with the help of pen and paper.
