@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-from itertools import chain, product
+from itertools import permutations, chain, product
 
 # Board
 
@@ -87,15 +87,18 @@ for i in range(0, length):
         basic_masks[i].append(rotated_mask)
         rotated_mask = rotate(rotated_mask)
 
-all_permutations = list(chain(product(basic_masks[0], basic_masks[1], basic_masks[2], basic_masks[3])))
+all_permutations = []
+for order in list(permutations(range(length))):
+    all_permutations.insert(0, list(chain(product(basic_masks[order[0]], basic_masks[order[1]], basic_masks[order[2]], basic_masks[order[3]]))))
 
-target = Lion * Zebra * Rhino * Elephant ** 3
+target = (Elephant ** 3) * (Lion ** 1) * (Zebra ** 1) * (Gazelle ** 2) * (Rhino ** 1) 
 
-for m in all_permutations:
-    masks = list(chain.from_iterable(m))
-    assert len(masks) == len(board)
-    result = 1
-    for i in range(0, len(board)):
-        result *= board[i] ** masks[i]
-    if result == target:
-        visualize(masks)
+for g in all_permutations:
+    for m in g:
+        masks = list(chain.from_iterable(m))
+        assert len(masks) == len(board)
+        result = 1
+        for i in range(0, len(board)):
+            result *= (board[i] ** masks[i])
+        if result == target:
+            visualize(masks)
