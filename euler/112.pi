@@ -1,0 +1,37 @@
+%Project Euler Problem 112
+%=========================
+%
+%Working from left-to-right if no digit is exceeded by the digit to its 
+%left it is called an increasing number; for example, 134468.
+%
+%Similarly if no digit is exceeded by the digit to its right it is 
+%called a decreasing number; for example, 66420.
+%
+%We shall call a positive integer that is neither increasing nor 
+%decreasing a "bouncy" number; for example, 155349.
+%
+%Clearly there cannot be any bouncy numbers below one-hundred, but just 
+%over half of the numbers below one-thousand (525) are bouncy. In fact, 
+%the least number for which the proportion of bouncy numbers first 
+%reaches 50% is 538.
+%
+%Surprisingly, bouncy numbers become more and more common and by the 
+%time we reach 21780 the proportion of bouncy numbers is equal to 90%.
+%
+%Find the least number for which the proportion of bouncy numbers is 
+%exactly 99%.
+
+%Not a descriptive solution yet.
+%Trying to construct n digits inc and dec numbers with n-1 digits.
+%1 digit: 9 = 9
+%2 digits: 9+8+7+6+5+4+3+2+1 = 45
+%3 digits: 45+36+28+21+15+10+6+3+1 = 165
+%(999-9-45*2-(165*2+45))/999 = 0.5255255255
+%4 digits: 165+120+84+56+35+20+10+4+1 = 495
+%(9999-9-45*2-(165*2+45)-(495*2+165+45))/9999 = 0.8325832583
+%5 digits: 495+330+210+126+70+35+15+5+1 = 1,287
+%(99999-9-45*2-(165*2+45)-(495*2+165+45)-(1287*2+495+165+45))/99999 = 0.9504695047
+%6 digits: 1287+792+462+252+126+56+21+6+1 = 3,003
+%(999999-9-45*2-(165*2+45)-(495*2+165+45)-(1287*2+495+165+45)-(3003*2+1287+495+165+45))/999999 = 0.987048987
+%7 digits: 3003+(792+462+252+126+56+21+6+1)+(462+252+126+56+21+6+1)+(252+126+56+21+6+1)+(126+56+21+6+1)+(56+21+6+1)+(21+6+1)+(6+1)+1 = 6,435
+%(9999999-9-45*2-(165*2+45)-(495*2+165+45)-(1287*2+495+165+45)-(3003*2+1287+495+165+45)-(6435*2+3003+1287+495+165+45))/9999999 = 0.9969183997
