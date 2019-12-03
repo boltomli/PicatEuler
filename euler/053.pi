@@ -1,0 +1,29 @@
+% Combinatoric selections
+   
+% Problem 53
+% There are exactly ten ways of selecting three from five, 12345:
+
+% 123, 124, 125, 134, 135, 145, 234, 235, 245, and 345
+
+% In combinatorics, we use the notation, \displaystyle \binom 5 3 = 10.
+
+% In general, \displaystyle \binom n r = \dfrac{n!}{r!(n-r)!}, where r \le n, n! = n \times (n-1) \times ... \times 3 \times 2 \times 1, and 0! = 1.
+
+% It is not until n = 23, that a value exceeds one-million: \displaystyle \binom {23} {10} = 1144066.
+
+% How many, not necessarily distinct, values of \displaystyle \binom n r for 1 \le n \le 100, are greater than one-million?
+
+% This can be solved without coding.
+% Consider Pascal triangle (杨辉三角 or 贾宪三角 in Chinese). Draw the triangle to level 100 then count elements > 1,000,000.
+% To be easier, count elements that are <= 1 million, and actually only half of them need to be counted.
+% Total elements: 5050 (Gauss's method)
+% n in 1..22: 253
+% n = 23: 18
+% n = 24: 16
+% n in 25..27: 14 * 3
+% n in 28..32: 12 * 5
+% n in 33..43: 10 * 11
+% n in 44..71: 8 * 28
+% n in 72..100: 6 * 29
+% n in 23..100 and r = 0: 78
+% 5050 - 253 - 18 - 16 - 42 - 60 - 110 - 224 - 174 - 78 = 4075
