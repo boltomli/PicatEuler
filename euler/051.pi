@@ -1,0 +1,43 @@
+% Prime digit replacements
+% Problem 51
+% By replacing the 1st digit of the 2-digit number *3, it turns out that six of the nine possible values: 13, 23, 43, 53, 73, and 83, are all prime.
+
+% By replacing the 3rd and 4th digits of 56**3 with the same digit, this 5-digit number is the first example having seven primes among the ten generated numbers, yielding the family: 56003, 56113, 56333, 56443, 56663, 56773, and 56993. Consequently 56003, being the first member of this family, is the smallest prime with this property.
+
+% Find the smallest prime which, by replacing part of the number (not necessarily adjacent digits) with the same digit, is part of an eight prime value family.
+
+% Non optimized, duplicate patterns are not handled.
+
+import util.
+
+main =>
+    PERM = permutations([1, 2, 3, 4, 5]),
+    SIZE = 8,
+    time(go(PERM, SIZE)).
+
+go(PERM, SIZE) =>
+    foreach (PATTERN in PERM)
+        check(PATTERN, SIZE)
+    end.
+
+check(PATTERN, SIZE) =>
+    foreach (E in [1, 3, 7, 9])
+        foreach (B in 0..9)
+            foreach (C in 0..9)
+                if (B + C + E mod 3 != 0) then
+                    COUNTER := 0,
+                    PRIMES := [],
+                    foreach (X in 0..9)
+                        NUM = B * 10 ** PATTERN[5] + C * 10 ** PATTERN[1] + X * 10 ** PATTERN[2] + X * 10 ** PATTERN[3] + X * 10 ** PATTERN[4] + E,
+                        if (prime(NUM) && NUM > 99999) then
+                            PRIMES := PRIMES ++ [NUM],
+                            COUNTER := COUNTER +1
+                        end,
+                        if (COUNTER == SIZE) then
+                            println(PRIMES)
+                        end
+                    end
+                end
+            end
+        end
+    end
